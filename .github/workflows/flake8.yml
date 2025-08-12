@@ -6,9 +6,19 @@ jobs:
     steps:
       - name: check out repository
         uses: actions/checkout@v4
+
       - name: Set up python environment
         uses: actions/setup-python@v5
         with:
           python-version: "3.13"
+
       - name: flake8 lint
         uses: py-actions/flake8@v2
+
+      - name: Send test result
+        if : sucess()
+        run: curl -H "Content-Type: application/json" -X POST -d '{"botName": "Flake8-Bot", "botIconImage": "https://static.dooray.com/static_images/dooray-bot.png", "text":"flake8-lint success :)"}' https://nhnent.dooray.com/services/3234962574780345705/4132907240604005278/j0_7OHGBQ9Ksl5ZQnTsB7w
+
+      - name: Send test result
+        if: failure()
+        run: curl -H "Content-Type: application/json" -X POST -d '{"botName": "Flake8-Bot", "botIconImage": "https://static.dooray.com/static_images/dooray-bot.png", "text":"flake8-lint fail :("}' https://nhnent.dooray.com/services/3234962574780345705/4132907240604005278/j0_7OHGBQ9Ksl5ZQnTsB7w
