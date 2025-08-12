@@ -16,7 +16,7 @@ jobs:
         uses: py-actions/flake8@v2
 
       - name: Send test result
-        if : sucess()
+        if : success()
         run: curl -H "Content-Type: application/json" -X POST -d '{"botName": "Flake8-Bot", "botIconImage": "https://static.dooray.com/static_images/dooray-bot.png", "text":"flake8-lint success :)"}' https://nhnent.dooray.com/services/3234962574780345705/4132907240604005278/j0_7OHGBQ9Ksl5ZQnTsB7w
 
       - name: Send test result
