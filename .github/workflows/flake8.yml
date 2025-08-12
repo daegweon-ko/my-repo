@@ -1,0 +1,14 @@
+name: flake8 lint
+on: [pull_request]
+jobs:
+  flake8-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check out repository
+      - uses: actions/checkout@v4
+      - name: Set up python environment
+      - uses: actions/setup-python@v5
+      - with:
+          python-version: "3.13"
+      - name: flake8 lint
+      - uses: py-actions/flake8@v2
