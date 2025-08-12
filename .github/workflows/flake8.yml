@@ -17,8 +17,16 @@ jobs:
 
       - name: Send test result
         if : success()
-        run: curl -H "Content-Type: application/json" -X POST -d '{"botName": "Flake8-Bot", "botIconImage": "https://static.dooray.com/static_images/dooray-bot.png", "text":"flake8-lint success :)"}' https://nhnent.dooray.com/services/3234962574780345705/4132907240604005278/j0_7OHGBQ9Ksl5ZQnTsB7w
+        run: |
+          curl -H "Content-Type: application/json" \
+               -X POST \
+               -d '{"botName": "Flake8-Bot", "botIconImage": "https://static.dooray.com/static_images/dooray-bot.png", "text":"flake8-lint success :)"}' \
+               https://nhnent.dooray.com/services/3234962574780345705/4132907240604005278/j0_7OHGBQ9Ksl5ZQnTsB7w
 
       - name: Send test result
         if: failure()
-        run: curl -H "Content-Type: application/json" -X POST -d '{"botName": "Flake8-Bot", "botIconImage": "https://static.dooray.com/static_images/dooray-bot.png", "text":"flake8-lint fail :("}' https://nhnent.dooray.com/services/3234962574780345705/4132907240604005278/j0_7OHGBQ9Ksl5ZQnTsB7w
+        run: |
+          curl -H "Content-Type: application/json" \
+               -X POST \
+               -d '{"botName": "Flake8-Bot", "botIconImage": "https://static.dooray.com/static_images/dooray-bot.png", "text":"flake8-lint fail :("}' \
+               https://nhnent.dooray.com/services/3234962574780345705/4132907240604005278/j0_7OHGBQ9Ksl5ZQnTsB7w
